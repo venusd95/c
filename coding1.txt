@@ -1,0 +1,151 @@
+
+hr@nacreservices.com
+
+Given an array of n integers in which each element is between 1 and n-1, 
+write an efficient function to determine any duplicated integer. 
+You may destroy the array.
+ What is the time complexities of your solution?  
+Function Prototype in C/C++: int findDuplicate(int a[], int n) 
+Function Prototype in Java: int findDuplicate(int a[]) 
+
+
+//array like size is 7
+//1 1 2 3 4 5 6........
+
+//1 2 3 4 5 6 1.......
+
+//1 2 3 4 5 6 6.......
+ 
+//elements are 6 5 4 3 2 1 1(it is the worst case to get 1 duplicate)
+//complete search method
+#include<stdio.h>
+#include<time.h>
+int findDuplicate(int x[],int y);
+int main()
+{
+int a[100],n,i,dup;
+   double diff;
+    clock_t start, end;
+printf("enter the size of the array");
+scanf("%d",&n);
+printf("enter %d elements into the array",n);
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+dup=findDuplicate(a,n);
+if(dup==-1)
+printf("no duplicates are here");
+else
+printf("%d",dup); 
+
+start = clock();
+    printf("\n\n%d",findDuplicate(a,n));
+    end = clock();
+    diff = (end - start) * 1000. / CLOCKS_PER_SEC;
+    printf("\ntime taken:%lf msec",diff);
+return 0;	
+}
+int findDuplicate(int x[],int y)
+{
+int i,j;
+		for(i = 0; i < y - 1; ++i) {
+			for( j = i + 1; j < y; ++j) {
+				if (x[j] == x[i])
+					return x[i];
+			}
+		}
+		return -1;	
+}
+
+//6 5 4 3 2 1 6
+//1 2 3 4 5 6 6
+
+2)//sort +scan the array
+//second method
+
+#include<stdio.h>
+#include<time.h>
+int findDuplicate(int x[],int y);
+void sort(int x[],int y);	
+int main()
+{
+int a[100],n,i,dup;
+   double diff;
+    clock_t start, end;
+printf("enter the size of the array");
+scanf("%d",&n);
+printf("enter %d elements into the array",n);
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+dup=findDuplicate(a,n);
+if(dup==-1)
+printf("no duplicates are here");
+else
+printf("%d",dup); 
+
+start = clock();
+    printf("\n\n%d",findDuplicate(a,n));
+    end = clock();
+    diff = (end - start) * 1000. / CLOCKS_PER_SEC;
+    printf("\ntime taken:%lf msec",diff);
+return 0;	
+}
+int findDuplicate(int x[],int y)
+{
+sort(x,y);	
+int i,j;
+		for(i = 0; i < y - 1; ++i) {
+			for( j = i + 1; j < y; ++j) {
+				if (x[j] == x[i])
+					return x[i];
+			}
+		}
+		return -1;	
+}
+void sort(int x[],int y)
+{
+int i,j,temp;
+		for(i = 0; i < y ; ++i) {
+			for( j = i + 1; j < y; ++j) {
+				if (x[i] >x[j])
+					{
+					temp=x[i];
+					x[i]=x[j];
+					x[j]=temp;	
+					}
+			}
+		}	
+	
+}
+ex3:
+scan+lookup array.
+//1 2 3 4 5 6 6 here size 7
+//take duplicate array having
+ 0 0 0 0 0 0 elements having size 6
+then it will become 0 0 0 0 1 0
+immediate we return value
+public static int findDuplicate3(int[] in) {
+		int n = in.length;
+		int[] aux = new int[n];
+		for (int i = 0; i < n; ++i) {
+			if(aux[in[i]] == 1) 
+                          return in[i];
+			aux[in[i]] = 1;
+		}
+		return -1;
+	}
+
+ex4:
+negation track:
+1 2 3 4 5 6  6
+
+-1 -2 -3 -4 -5 -6 -6
+public static int findDuplicate4(int[] in) {	
+		for (int i = 0; i < in.length; ++i) {
+			int element = Math.abs(in[i]);
+			if(in[element] < 0)
+				return element;
+			in[element] *= -1 ;
+		}
+		return -1;
+
+	}
