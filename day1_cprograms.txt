@@ -1,0 +1,159 @@
+
+shift+tab:
+//indentation is good to use this
+
+
+1) //wap to find the given no is even or odd
+#include<stdio.h>
+int main()
+{
+int n;
+printf("enter the number");
+scanf("%d",&n);
+if(n%2==0)
+printf("%d is even no",n);
+else
+printf("%d is odd no",n);	
+return 0;	
+}
+
+2)//wap to find given character is lowercase alphabet or uppercase or digit
+#include<stdio.h>
+int main()
+{
+char ch;
+printf("enter the character");
+scanf("%c",&ch);
+if(ch>=65&&ch<=90)
+printf("it is uppercase alphabet");
+else if(ch>=97&&ch<=122)
+printf("it is lowercase alphabet");
+else if(ch>=48&&ch<=57)
+printf("it is digit");
+else
+printf("it is special character");
+return 0;	
+}
+
+3) // biggest of 3 nos
+#include<stdio.h>
+int main()
+{
+int a,b,c;
+printf("enter the 3 nos");
+scanf("%d%d%d",&a,&b,&c);
+if(a>b&&a>c)
+printf("%d is big",a);
+else if(b>c)
+printf("%d is big",b);
+else
+printf("%d is big",c);
+return 0;	
+}
+
+
+4) //to find the given char is vowel or consonant
+
+#include<stdio.h>
+int main()
+{
+char ch;
+printf("enter the character");
+scanf("%c",&ch);
+switch(ch)
+{
+ case 'a':
+ case 'e':
+case 'i':
+case 'o':
+case 'u':
+case 'A':
+case 'E':
+case 'I':
+case 'O':
+case 'U':
+printf("it is vowel");
+break;
+default:
+printf("it is consonant");
+break;	
+}
+return 0;	
+}
+
+5) //to find a no is divisible by 5 and 11
+#include<stdio.h>
+int main()
+{
+int n;
+printf("enter the no");
+scanf("%d",&n);
+if(n%5==0&&n%11==0)
+printf("it is divisible");
+else
+printf("it is not divisible");
+return 0;	
+}
+
+6) //to find out given values  are angles of the traingle
+#include<stdio.h>
+int main()
+{
+int a,b,c;
+printf("enter the angles of the traingle");
+scanf("%d%d%d",&a,&b,&c);
+if(a+b+c==180)
+printf("a,b and c are traingle angles");
+else
+printf("a,b and c are not traingle angles");
+return 0;	
+}
+
+
+7) //to find out name of the day from  a week
+#include<stdio.h>
+int main()
+{
+int d;
+printf("enter the day");
+scanf("%d",&d);
+switch(d)
+{
+case 0:
+printf("sunday");
+break;
+case 1:
+printf("monday");
+break;
+case 2:
+printf("tuesday");
+break;
+case 3:
+printf("wendsday");
+break;
+case 4:
+printf("thursday");
+break;
+case 5:
+printf("friday");
+break;
+case 6:
+printf("saturday");
+break;
+default:
+	printf("choose[0-6]only");
+	break;
+}
+return 0;	
+}
+
+8) //to find out year is leap year or not using conditional operator
+#include<stdio.h>
+int main()
+{
+int yr;
+printf("enter the year");
+scanf("%d",&yr);
+((yr%100!=0&&yr%4==0)||(yr%400==0))?printf("leap year"):printf("not leap year");
+return 0;	
+}
